@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bs-font-sans-serif: "DM Sans", sans-serif;
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bs-body-font-family: "DM Sans", sans-serif;
+  --bs-blue: #559bfb;
+}
+
+html {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}

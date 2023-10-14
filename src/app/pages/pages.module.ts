@@ -9,6 +9,9 @@ import { LeftComponent } from './common/left/left.component';
 import { RightComponent } from './common/right/right.component';
 import { AuthComponent } from './component/auth/auth.component';
 import { SharedModule } from '../_shared/services/shared.service';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { SharedModule } from '../_shared/services/shared.service';
     LeftComponent,
     RightComponent,
     AuthComponent,
+    DashboardComponent,
   ],
   imports: [CommonModule, PagesRoutingModule, SharedModule],
 })

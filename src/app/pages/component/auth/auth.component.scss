@@ -1,0 +1,11 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-wrapper {
+  max-width: 420px;
+  width: 100%;
+  margin: auto;
+}

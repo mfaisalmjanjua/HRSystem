@@ -10,6 +10,7 @@ import { RightComponent } from './common/right/right.component';
 import { AuthComponent } from './component/auth/auth.component';
 import { SharedModule } from '../_shared/services/shared.service';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 
 
@@ -22,6 +23,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     RightComponent,
     AuthComponent,
     DashboardComponent,
+    AdminComponent,
   ],
   imports: [CommonModule, PagesRoutingModule, SharedModule],
 })

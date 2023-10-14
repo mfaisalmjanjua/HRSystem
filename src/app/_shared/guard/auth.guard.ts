@@ -24,12 +24,19 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     const user = this._authSrv.userValue;
     if (user) {
+      // check if route is restricted by role
+      const { roles } = route.data;
+      if (roles && !roles.includes(user.role)) {
+        // role not authorized so redirect to home page
+        this._router.navigate(['/']);
+        return false;
+      }
+
+      // authorized so return true
       return true;
     }
 
-    this._router.navigate(['/auth'], {
-      queryParams: { returnUrl: state.url },
-    });
+    this._router.navigate(['/auth'], { queryParams: { returnUrl: state.url } });
     return false;
   }
 }

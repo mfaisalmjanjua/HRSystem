@@ -4,6 +4,9 @@ import { CoreComponent } from './core/core.component';
 import { AuthComponent } from './component/auth/auth.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { AuthGuard } from '../_shared/guard/auth.guard';
+import { AdminComponent } from './component/admin/admin.component';
+
+import { Role } from '../_shared/model/role';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -11,6 +14,12 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] },
   },
   { path: 'auth', component: AuthComponent },
 ];

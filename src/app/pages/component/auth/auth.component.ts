@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 
@@ -27,14 +32,20 @@ export class AuthComponent implements OnInit {
 
   frm() {
     this.lgFrm = this._fb.group({
-      username: new FormControl('admin'),
-      password: new FormControl('admin'),
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
   }
 
-  //
+  // access values
   get f() {
     return this.lgFrm.controls;
+  }
+  get username() {
+    return this.lgFrm.get('username');
+  }
+  get password() {
+    return this.lgFrm.get('password');
   }
 
   onSubmit() {

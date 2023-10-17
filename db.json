@@ -1,9 +1,20 @@
 {
-  "comments": [
+  "users": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "username": "admin",
+      "password": "admin",
+      "firstName": "Super",
+      "lastName": "Admin",
+      "token": "fake-token"
+    },
+    {
+      "id": 1,
+      "username": "user",
+      "password": "user",
+      "firstName": "Normal",
+      "lastName": "User",
+      "token": "fake-token"
     }
   ]
 }

@@ -5,10 +5,24 @@
     "Liberation Mono", "Courier New", monospace;
   --bs-body-font-family: "DM Sans", sans-serif;
   --bs-blue: #559bfb;
+  --background: #efebe9;
 }
 
 html {
   min-height: 100vh;
   height: auto;
   margin: 0;
+}
+body {
+  font-size: 16px;
+  background-color: var(--background);
+}
+
+p {
+  color: #3e2723;
+  font-size: 0.85em;
+}
+label{
+  font-size: .9em;
+  color: black;
 }

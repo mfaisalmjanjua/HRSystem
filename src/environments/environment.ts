@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   ls_variable: 'hrmSystem',
-  localSrv: 'http://localhost:4200'
-
+  localSrv: 'http://localhost:4200',
+  localDB: 'http://localhost:3000',
 };
 
 /*

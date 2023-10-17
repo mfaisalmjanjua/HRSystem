@@ -4,17 +4,19 @@
       "id": 1,
       "username": "admin",
       "password": "admin",
-      "firstName": "Super",
-      "lastName": "Admin",
-      "token": "fake-token"
+      "fname": "Super",
+      "lname": "Admin",
+      "token": "fake-token",
+      "role": "admin"
     },
     {
       "id": 1,
       "username": "user",
       "password": "user",
-      "firstName": "Normal",
-      "lastName": "User",
-      "token": "fake-token"
+      "fname": "Normal",
+      "lname": "User",
+      "token": "fake-token",
+      "role": "user"
     }
   ]
 }

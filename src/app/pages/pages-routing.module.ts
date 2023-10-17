@@ -9,17 +9,23 @@ import { AdminComponent } from './component/admin/admin.component';
 import { Role } from '../_shared/model/role';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [Role.Admin] },
+    path: '',
+    component: CoreComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] },
+      },
+    ],
   },
   { path: 'auth', component: AuthComponent },
 ];

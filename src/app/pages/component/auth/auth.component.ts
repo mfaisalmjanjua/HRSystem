@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 
@@ -32,9 +37,15 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  //
+  // access values
   get f() {
     return this.lgFrm.controls;
+  }
+  get username() {
+    return this.lgFrm.get('username');
+  }
+  get password() {
+    return this.lgFrm.get('password');
   }
 
   onSubmit() {
@@ -56,6 +67,8 @@ export class AuthComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
+          this.error = err.message;
+          this.loading = false;
         },
       });
 

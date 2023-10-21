@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // logout
   logout() {
     this._authSrv.logout();
   }

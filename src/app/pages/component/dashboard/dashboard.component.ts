@@ -19,6 +19,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    // this.loading = true;
+    // this._userSrv
+    //   .getById(this.user.id)
+    //   .pipe(first())
+    //   .subscribe((user) => {
+    //     this.loading = false;
+    //     this.userFromApi = user;
+    //     console.log(user);
+    //   });
   }
 }

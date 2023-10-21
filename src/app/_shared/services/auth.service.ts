@@ -14,6 +14,7 @@ import {
 } from 'rxjs';
 import { User } from '../model/user';
 
+import { config } from '@environments/config'
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -36,16 +37,12 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  error() {
-    return throwError(() => ({ status: 400, error: 'some eror' })).pipe(
-      materialize(),
-      delay(500),
-      dematerialize()
-    );
-  }
 
   ok(body: any) {
-    return of(new HttpResponse({ status: 200, body })).pipe(delay(500));
+    return of({
+      status: 200,
+      body,
+    });
   }
 
   login(user: string, password: string) {

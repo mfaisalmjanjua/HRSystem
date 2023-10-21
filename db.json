@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "fname": "Super",
+      "lname": "Admin",
+      "token": "fake-token",
+      "role": "admin"
+    },
+    {
+      "id": 1,
+      "username": "user",
+      "password": "user",
+      "fname": "Normal",
+      "lname": "User",
+      "token": "fake-token",
+      "role": "user"
+    }
+  ]
+}

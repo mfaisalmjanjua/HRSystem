@@ -21,6 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
     const isLoggedIn = user?.token;
     const isApiUrl = request.url.startsWith(environment.localSrv);
 
+    console.log(user?.token,"auth interceptor")
+
     if (isLoggedIn && isApiUrl) {
       request = request.clone({
         setHeaders: {

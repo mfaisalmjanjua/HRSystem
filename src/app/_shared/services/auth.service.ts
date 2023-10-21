@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Observer,
+  catchError,
+  delay,
+  dematerialize,
+  map,
+  materialize,
+  observable,
+  of,
+  throwError,
+} from 'rxjs';
 import { User } from '../model/user';
 
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -24,24 +36,61 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  login(username: string, password: string) {
-    return this._http
-      .post<any>(`${environment.localSrv}/users/authenticate`, {
-        username,
-        password,
-      })
-      .pipe(
-        map((user) => {
-          localStorage.setItem(environment.ls_variable, JSON.stringify(user));
-          this.userSubject.next(user);
-          return user;
-        })
-      );
+  error() {
+    return throwError(() => ({ status: 400, error: 'some eror' })).pipe(
+      materialize(),
+      delay(500),
+      dematerialize()
+    );
   }
 
+  ok(body: any) {
+    return of(new HttpResponse({ status: 200, body })).pipe(delay(500));
+  }
+
+  login(user: string, password: string) {
+    return this._http.get(`${environment.localDB}/users`).pipe(
+      map((users: any) => {
+        return users.find((x: any) => {
+          console.log(x);
+        });
+      }),
+      catchError((x) => {
+        console.log(x, "yahoooooo")
+        return throwError(()=>{
+          return "errr1"
+        })
+      })
+    );
+  }
+
+  // login(username: string, password: string) {
+  //   return this._http.get(`${environment.localDB}/users`).pipe(
+  //     map((users: any) => {
+  //       const user = users.filter(
+  //         (x: any) => x.username === username && x.password === password
+  //       );
+  //       return user;
+  //     })
+  //   );
+
+  // return this._http
+  //   .post<any>(`${environment.localSrv}/users/authenticate`, {
+  //     username,
+  //     password,
+  //   })
+  //   .pipe(
+  //     map((user) => {
+  //       localStorage.setItem(environment.ls_variable, JSON.stringify(user));
+  //       this.userSubject.next(user);
+  //       return user;
+  //     })
+  //   );
+  // }
+
   logout() {
-    localStorage.removeItem(environment.ls_variable)
-    this.userSubject.next(null)
-    this._router.navigate(['/auth'])
+    localStorage.removeItem(environment.ls_variable);
+    this.userSubject.next(null);
+    this._router.navigate(['/auth']);
   }
 }

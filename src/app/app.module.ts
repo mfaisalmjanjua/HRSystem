@@ -23,7 +23,7 @@ import { ErrorInterceptor } from './_shared/interceptor/error.interceptor';
       useClass: ErrorInterceptor,
       multi: true,
     },
-    fakeBackendProvider,
+    // fakeBackendProvider,
   ],
   bootstrap: [AppComponent],
 })

@@ -27,8 +27,8 @@ export class AuthComponent implements OnInit {
 
   frm() {
     this.lgFrm = this._fb.group({
-      username: new FormControl('admin'),
-      password: new FormControl('admin'),
+      username: new FormControl('kminchelle'),
+      password: new FormControl('0lelplR'),
     });
   }
 
@@ -46,18 +46,34 @@ export class AuthComponent implements OnInit {
     this._authSrv
       .login(this.f['username'].value, this.f['password'].value)
       .subscribe({
-        next: () => {
+        next: (x) => {
           this.submitted = false;
+
           this.loading = false;
-          const returnUrl =
-            this._route.snapshot.queryParams['returnUrl'] || '/';
+          console.log(x);
+          const returnUrl = this._route.snapshot.queryParams['returnUrl'] || '';
           this._router.navigate([returnUrl]);
         },
         error: (err) => {
           console.log(err);
-          this.error = err;
-          this.loading = false;
         },
       });
+
+    // this._authSrv
+    //   .login(this.f['username'].value, this.f['password'].value)
+    //   .subscribe({
+    //     next: () => {
+    //       this.submitted = false;
+    //       this.loading = false;
+    //       const returnUrl =
+    //         this._route.snapshot.queryParams['returnUrl'] || '/';
+    //       // this._router.navigate([returnUrl]);
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //       this.error = err;
+    //       this.loading = false;
+    //     },
+    //   });
   }
 }
